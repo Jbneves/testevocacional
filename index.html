@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Teste Vocacional - Técnico em Administração</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f6f9;
+}
+
+header{
+    background:#1565C0;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.container{
+
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+
+}
+
+.card{
+
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+
+}
+
+h2{
+
+    color:#1565C0;
+
+}
+
+.pergunta{
+
+    font-size:18px;
+    margin-bottom:15px;
+
+}
+
+.opcoes{
+
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+
+}
+
+.opcoes label{
+
+    background:#eeeeee;
+    border-radius:8px;
+    padding:10px;
+    cursor:pointer;
+    flex:1;
+    text-align:center;
+
+}
+
+input[type=radio]{
+
+    display:none;
+
+}
+
+input[type=radio]:checked + span{
+
+    color:white;
+
+}
+
+input[type=radio]:checked + span{
+
+    display:block;
+    background:#1565C0;
+    padding:10px;
+    border-radius:8px;
+
+}
+
+button{
+
+    width:100%;
+    padding:18px;
+    border:none;
+    background:#1565C0;
+    color:white;
+    font-size:20px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:20px;
+
+}
+
+button:hover{
+
+    background:#0D47A1;
+
+}
+
+#resultado{
+
+display:none;
+margin-top:30px;
+
+}
+
+.barra{
+
+height:28px;
+background:#ddd;
+border-radius:30px;
+overflow:hidden;
+margin-bottom:15px;
+
+}
+
+.progresso{
+
+height:100%;
+width:0%;
+background:#43A047;
+color:white;
+text-align:center;
+line-height:28px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Teste Vocacional</h1>
+
+<p>Técnico em Administração</p>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Instruções</h2>
+
+<p>
+
+Marque um número de <b>1</b> a <b>5</b> para cada pergunta.
+
+<br><br>
+
+<b>1</b> Discordo totalmente<br>
+<b>2</b> Discordo<br>
+<b>3</b> Neutro<br>
+<b>4</b> Concordo<br>
+<b>5</b> Concordo totalmente
+
+</p>
+
+</div>
+
+<form id="formulario">
+<div class="card">
+<div class="pergunta">
+1. Sinto prazer em trabalhar com números, cálculos e controle financeiro.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q1" value="1" required><span>1</span></label>
+<label><input type="radio" name="q1" value="2"><span>2</span></label>
+<label><input type="radio" name="q1" value="3"><span>3</span></label>
+<label><input type="radio" name="q1" value="4"><span>4</span></label>
+<label><input type="radio" name="q1" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+2. Gosto de ouvir as pessoas e ajudá-las a resolver problemas.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q2" value="1" required><span>1</span></label>
+<label><input type="radio" name="q2" value="2"><span>2</span></label>
+<label><input type="radio" name="q2" value="3"><span>3</span></label>
+<label><input type="radio" name="q2" value="4"><span>4</span></label>
+<label><input type="radio" name="q2" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+3. Prefiro ambientes organizados, onde tudo tem seu lugar e sua função.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q3" value="1" required><span>1</span></label>
+<label><input type="radio" name="q3" value="2"><span>2</span></label>
+<label><input type="radio" name="q3" value="3"><span>3</span></label>
+<label><input type="radio" name="q3" value="4"><span>4</span></label>
+<label><input type="radio" name="q3" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+4. Tenho facilidade para criar ideias que chamem a atenção das pessoas.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q4" value="1" required><span>1</span></label>
+<label><input type="radio" name="q4" value="2"><span>2</span></label>
+<label><input type="radio" name="q4" value="3"><span>3</span></label>
+<label><input type="radio" name="q4" value="4"><span>4</span></label>
+<label><input type="radio" name="q4" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+5. Sinto-me confortável liderando equipes e tomando decisões.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q5" value="1" required><span>1</span></label>
+<label><input type="radio" name="q5" value="2"><span>2</span></label>
+<label><input type="radio" name="q5" value="3"><span>3</span></label>
+<label><input type="radio" name="q5" value="4"><span>4</span></label>
+<label><input type="radio" name="q5" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+6. Antes de decidir alguma coisa, gosto de analisar dados e informações.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q6" value="1" required><span>1</span></label>
+<label><input type="radio" name="q6" value="2"><span>2</span></label>
+<label><input type="radio" name="q6" value="3"><span>3</span></label>
+<label><input type="radio" name="q6" value="4"><span>4</span></label>
+<label><input type="radio" name="q6" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+7. Trabalhar em equipe e incentivar outras pessoas me motiva.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q7" value="1" required><span>1</span></label>
+<label><input type="radio" name="q7" value="2"><span>2</span></label>
+<label><input type="radio" name="q7" value="3"><span>3</span></label>
+<label><input type="radio" name="q7" value="4"><span>4</span></label>
+<label><input type="radio" name="q7" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+8. Gosto de planejar atividades para que tudo aconteça no prazo certo.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q8" value="1" required><span>1</span></label>
+<label><input type="radio" name="q8" value="2"><span>2</span></label>
+<label><input type="radio" name="q8" value="3"><span>3</span></label>
+<label><input type="radio" name="q8" value="4"><span>4</span></label>
+<label><input type="radio" name="q8" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+9. Tenho interesse por publicidade, redes sociais e divulgação de produtos ou serviços.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q9" value="1" required><span>1</span></label>
+<label><input type="radio" name="q9" value="2"><span>2</span></label>
+<label><input type="radio" name="q9" value="3"><span>3</span></label>
+<label><input type="radio" name="q9" value="4"><span>4</span></label>
+<label><input type="radio" name="q9" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+10. Sonho em criar ou administrar minha própria empresa.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q10" value="1" required><span>1</span></label>
+<label><input type="radio" name="q10" value="2"><span>2</span></label>
+<label><input type="radio" name="q10" value="3"><span>3</span></label>
+<label><input type="radio" name="q10" value="4"><span>4</span></label>
+<label><input type="radio" name="q10" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+11. Sou uma pessoa organizada e dificilmente esqueço compromissos importantes.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q11" value="1" required><span>1</span></label>
+<label><input type="radio" name="q11" value="2"><span>2</span></label>
+<label><input type="radio" name="q11" value="3"><span>3</span></label>
+<label><input type="radio" name="q11" value="4"><span>4</span></label>
+<label><input type="radio" name="q11" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+12. Consigo lidar bem com opiniões diferentes e resolver conflitos entre pessoas.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q12" value="1" required><span>1</span></label>
+<label><input type="radio" name="q12" value="2"><span>2</span></label>
+<label><input type="radio" name="q12" value="3"><span>3</span></label>
+<label><input type="radio" name="q12" value="4"><span>4</span></label>
+<label><input type="radio" name="q12" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+13. Gosto de encontrar formas de melhorar processos e evitar desperdícios.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q13" value="1" required><span>1</span></label>
+<label><input type="radio" name="q13" value="2"><span>2</span></label>
+<label><input type="radio" name="q13" value="3"><span>3</span></label>
+<label><input type="radio" name="q13" value="4"><span>4</span></label>
+<label><input type="radio" name="q13" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+14. Tenho facilidade para convencer pessoas utilizando bons argumentos.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q14" value="1" required><span>1</span></label>
+<label><input type="radio" name="q14" value="2"><span>2</span></label>
+<label><input type="radio" name="q14" value="3"><span>3</span></label>
+<label><input type="radio" name="q14" value="4"><span>4</span></label>
+<label><input type="radio" name="q14" value="5"><span>5</span></label>
+</div>
+</div>
+
+<div class="card">
+<div class="pergunta">
+15. Quando participo de um trabalho em grupo, normalmente assumo a responsabilidade pela organização.
+</div>
+<div class="opcoes">
+<label><input type="radio" name="q15" value="1" required><span>1</span></label>
+<label><input type="radio" name="q15" value="2"><span>2</span></label>
+<label><input type="radio" name="q15" value="3"><span>3</span></label>
+<label><input type="radio" name="q15" value="4"><span>4</span></label>
+<label><input type="radio" name="q15" value="5"><span>5</span></label>
+</div>
+</div>
+
+<button type="button" onclick="calcularResultado()">
+Calcular Resultado
+</button>
+
+<div id="resultado"></div>
+<script>
+
+function v(nome){
+
+    const resposta =
+        document.querySelector('input[name="'+nome+'"]:checked');
+
+    if(!resposta){
+
+        alert("Responda todas as perguntas antes de calcular.");
+
+        throw new Error("Pergunta não respondida.");
+
+    }
+
+    return parseInt(resposta.value);
+
+}
+
+function barra(nome,pontos){
+
+    return `
+    <h3>${nome} - ${pontos} pontos</h3>
+
+    <div class="barra">
+
+        <div class="progresso"
+             style="width:${(pontos/15)*100}%">
+
+            ${pontos}/15
+
+        </div>
+
+    </div>
+    `;
+
+}
+
+function calcularResultado(){
+
+let financeiro=
+v("q1")+
+v("q6")+
+v("q11");
+
+let rh=
+v("q2")+
+v("q7")+
+v("q12");
+
+let logistica=
+v("q3")+
+v("q8")+
+v("q13");
+
+let marketing=
+v("q4")+
+v("q9")+
+v("q14");
+
+let gestao=
+v("q5")+
+v("q10")+
+v("q15");
+
+
+let areas={
+
+"Financeiro":financeiro,
+"Recursos Humanos":rh,
+"Logística":logistica,
+"Marketing":marketing,
+"Gestão e Empreendedorismo":gestao
+
+};
+
+let maior=0;
+let melhor="";
+
+for(let a in areas){
+
+if(areas[a]>maior){
+
+maior=areas[a];
+melhor=a;
+
+}
+
+}
+
+let texto="";
+
+switch(melhor){
+
+case "Financeiro":
+
+texto=`
+
+<h2>💰 Financeiro</h2>
+
+<p>
+
+Você demonstra facilidade para trabalhar com números,
+análises, planejamento financeiro, controle de gastos,
+investimentos, contabilidade e tomada de decisões baseadas
+em dados.
+
+É um perfil muito valorizado em bancos, empresas,
+escritórios de contabilidade e setores financeiros.
+
+</p>
+
+`;
+
+break;
+
+case "Recursos Humanos":
+
+texto=`
+
+<h2>👥 Recursos Humanos</h2>
+
+<p>
+
+Seu perfil indica facilidade para trabalhar com pessoas,
+resolver conflitos, desenvolver equipes, recrutar talentos
+e promover um ambiente organizacional saudável.
+
+Você tende a ter boa comunicação e inteligência emocional.
+
+</p>
+
+`;
+
+break;
+
+case "Logística":
+
+texto=`
+
+<h2>📦 Logística</h2>
+
+<p>
+
+Você demonstra organização, planejamento,
+capacidade de controlar processos, estoques,
+transportes e distribuição de produtos.
+
+É um perfil essencial para empresas industriais,
+comércio e centros de distribuição.
+
+</p>
+
+`;
+
+break;
+
+case "Marketing":
+
+texto=`
+
+<h2>📈 Marketing</h2>
+
+<p>
+
+Você possui criatividade,
+boa comunicação,
+capacidade de convencer pessoas,
+interesse por redes sociais,
+publicidade e vendas.
+
+Tem perfil para atuar com marketing digital,
+propaganda e relacionamento com clientes.
+
+</p>
+
+`;
+
+break;
+
+case "Gestão e Empreendedorismo":
+
+texto=`
+
+<h2>📊 Gestão e Empreendedorismo</h2>
+
+<p>
+
+Você demonstra perfil de liderança,
+visão estratégica,
+capacidade para tomar decisões,
+assumir responsabilidades
+e administrar equipes ou empresas.
+
+Possui características importantes para cargos de gestão
+ou para abrir seu próprio negócio.
+
+</p>
+
+`;
+
+break;
+
+}
+
+document.getElementById("resultado").style.display="block";
+
+document.getElementById("resultado").innerHTML=`
+
+<div class="card">
+
+<h1>Resultado do Teste</h1>
+
+${texto}
+
+<hr>
+
+${barra("Financeiro",financeiro)}
+
+${barra("Recursos Humanos",rh)}
+
+${barra("Logística",logistica)}
+
+${barra("Marketing",marketing)}
+
+${barra("Gestão",gestao)}
+
+<h2>
+
+Área com maior afinidade:
+
+<br><br>
+
+<b style="color:#1565C0">
+
+${melhor}
+
+</b>
+
+</h2>
+
+<button onclick="location.reload()">
+
+Refazer Teste
+
+</button>
+
+</div>
+
+`;
+
+window.scrollTo({
+
+top:document.body.scrollHeight,
+
+behavior:"smooth"
+
+});
+
+}
+
+</script>
+
+</form>
+
+</div>
+<div class="card">
+
+<h2>📚 Metodologia do Teste</h2>
+
+<p style="text-align:justify; line-height:1.8;">
+
+Este teste vocacional foi desenvolvido com finalidade <b>educacional e orientativa</b>, buscando auxiliar estudantes do Curso Técnico em Administração na reflexão sobre suas características pessoais, interesses e afinidades com as principais áreas de atuação da Administração.
+
+<br><br>
+
+O questionário é composto por <b>15 perguntas</b>, distribuídas igualmente entre cinco áreas profissionais:
+
+<ul>
+
+<li>💰 Financeiro</li>
+<li>👥 Recursos Humanos</li>
+<li>📦 Logística</li>
+<li>📈 Marketing</li>
+<li>📊 Gestão e Empreendedorismo</li>
+
+</ul>
+
+Cada área é representada por três perguntas. Para cada afirmação, o participante atribui uma nota de <b>1 a 5</b>, sendo:
+
+<ul>
+
+<li>1 – Discordo totalmente</li>
+<li>2 – Discordo</li>
+<li>3 – Nem concordo nem discordo</li>
+<li>4 – Concordo</li>
+<li>5 – Concordo totalmente</li>
+
+</ul>
+
+A pontuação final de cada área corresponde à soma das respostas das três questões relacionadas a ela. Dessa forma, cada área pode obter uma pontuação mínima de <b>3 pontos</b> e máxima de <b>15 pontos</b>.
+
+O sistema calcula automaticamente todas as pontuações, organiza as áreas em ordem decrescente e apresenta ao participante aquela com maior afinidade, além de um ranking completo para facilitar a interpretação dos resultados.
+
+<br><br>
+
+É importante destacar que este instrumento <b>não possui finalidade diagnóstica ou psicológica</b>, nem substitui avaliações realizadas por profissionais especializados em Orientação Profissional ou Psicologia. Seu objetivo é estimular o autoconhecimento e apoiar discussões em sala de aula sobre possibilidades de carreira na Administração.
+
+</p>
+
+<h3>Referências utilizadas na elaboração</h3>
+
+<p style="text-align:justify; line-height:1.8;">
+
+A estrutura do teste foi inspirada em princípios de orientação profissional, desenvolvimento de competências e perfis comportamentais utilizados em materiais educacionais das áreas de Administração e Gestão, incluindo conceitos presentes em:
+
+<ul>
+
+<li>Diretrizes Curriculares da Educação Profissional e Tecnológica (MEC).</li>
+
+<li>Competências profissionais descritas pelo Catálogo Nacional de Cursos Técnicos (CNCT).</li>
+
+<li>Literatura introdutória sobre Administração, Recursos Humanos, Marketing, Logística e Finanças.</li>
+
+<li>Princípios gerais de orientação vocacional utilizados em contextos educacionais.</li>
+
+</ul>
+
+O conteúdo das perguntas foi elaborado especificamente para este projeto, considerando competências frequentemente desenvolvidas durante o Curso Técnico em Administração.
+
+</p>
+
+</div>
+
+<footer style="
+margin-top:50px;
+padding:25px;
+text-align:center;
+background:#1565C0;
+color:white;
+font-size:15px;
+line-height:1.8;
+">
+
+<b>Teste Vocacional para o Curso Técnico em Administração</b>
+
+<br><br>
+
+Desenvolvido por <b>Sebastião J. F. Rezende</b>
+
+<br>
+
+Curso Técnico em Administração
+
+<br>
+
+Nepomuceno - MG
+
+<br><br>
+
+© 2026 - Todos os direitos reservados.
+
+
+
+</footer>
+
+</body>
+
+</html>
