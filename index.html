@@ -391,6 +391,7 @@ function v(nome){
 
 }
 
+
 function barra(nome,pontos){
 
     return `
@@ -409,6 +410,7 @@ function barra(nome,pontos){
     `;
 
 }
+
 
 function calcularResultado(){
 
@@ -448,136 +450,197 @@ let areas={
 
 };
 
-let maior=0;
-let melhor="";
 
-for(let a in areas){
+/* =========================================================
+   NOVA LÓGICA DE EMPATE
+   ========================================================= */
 
-if(areas[a]>maior){
+let maior = Math.max(...Object.values(areas));
 
-maior=areas[a];
-melhor=a;
+let melhores = Object.keys(areas).filter(
+    area => areas[area] === maior
+);
 
-}
 
-}
+/* =========================================================
+   DESCRIÇÃO DO RESULTADO
+   ========================================================= */
 
 let texto="";
 
-switch(melhor){
 
-case "Financeiro":
+if(melhores.length === 1){
 
-texto=`
+    switch(melhores[0]){
 
-<h2>💰 Financeiro</h2>
+        case "Financeiro":
 
-<p>
+        texto=`
 
-Você demonstra facilidade para trabalhar com números,
-análises, planejamento financeiro, controle de gastos,
-investimentos, contabilidade e tomada de decisões baseadas
-em dados.
+        <h2>💰 Financeiro</h2>
 
-É um perfil muito valorizado em bancos, empresas,
-escritórios de contabilidade e setores financeiros.
+        <p>
 
-</p>
+        Você demonstra facilidade para trabalhar com números,
+        análises, planejamento financeiro, controle de gastos,
+        investimentos, contabilidade e tomada de decisões baseadas
+        em dados.
 
-`;
+        É um perfil muito valorizado em bancos, empresas,
+        escritórios de contabilidade e setores financeiros.
 
-break;
+        </p>
 
-case "Recursos Humanos":
+        `;
 
-texto=`
+        break;
 
-<h2>👥 Recursos Humanos</h2>
 
-<p>
+        case "Recursos Humanos":
 
-Seu perfil indica facilidade para trabalhar com pessoas,
-resolver conflitos, desenvolver equipes, recrutar talentos
-e promover um ambiente organizacional saudável.
+        texto=`
 
-Você tende a ter boa comunicação e inteligência emocional.
+        <h2>👥 Recursos Humanos</h2>
 
-</p>
+        <p>
 
-`;
+        Seu perfil indica facilidade para trabalhar com pessoas,
+        resolver conflitos, desenvolver equipes, recrutar talentos
+        e promover um ambiente organizacional saudável.
 
-break;
+        Você tende a ter boa comunicação e inteligência emocional.
 
-case "Logística":
+        </p>
 
-texto=`
+        `;
 
-<h2>📦 Logística</h2>
+        break;
 
-<p>
 
-Você demonstra organização, planejamento,
-capacidade de controlar processos, estoques,
-transportes e distribuição de produtos.
+        case "Logística":
 
-É um perfil essencial para empresas industriais,
-comércio e centros de distribuição.
+        texto=`
 
-</p>
+        <h2>📦 Logística</h2>
 
-`;
+        <p>
 
-break;
+        Você demonstra organização, planejamento,
+        capacidade de controlar processos, estoques,
+        transportes e distribuição de produtos.
 
-case "Marketing":
+        É um perfil essencial para empresas industriais,
+        comércio e centros de distribuição.
 
-texto=`
+        </p>
 
-<h2>📈 Marketing</h2>
+        `;
 
-<p>
+        break;
 
-Você possui criatividade,
-boa comunicação,
-capacidade de convencer pessoas,
-interesse por redes sociais,
-publicidade e vendas.
 
-Tem perfil para atuar com marketing digital,
-propaganda e relacionamento com clientes.
+        case "Marketing":
 
-</p>
+        texto=`
 
-`;
+        <h2>📈 Marketing</h2>
 
-break;
+        <p>
 
-case "Gestão e Empreendedorismo":
+        Você possui criatividade,
+        boa comunicação,
+        capacidade de convencer pessoas,
+        interesse por redes sociais,
+        publicidade e vendas.
 
-texto=`
+        Tem perfil para atuar com marketing digital,
+        propaganda e relacionamento com clientes.
 
-<h2>📊 Gestão e Empreendedorismo</h2>
+        </p>
 
-<p>
+        `;
 
-Você demonstra perfil de liderança,
-visão estratégica,
-capacidade para tomar decisões,
-assumir responsabilidades
-e administrar equipes ou empresas.
+        break;
 
-Possui características importantes para cargos de gestão
-ou para abrir seu próprio negócio.
 
-</p>
+        case "Gestão e Empreendedorismo":
 
-`;
+        texto=`
 
-break;
+        <h2>📊 Gestão e Empreendedorismo</h2>
+
+        <p>
+
+        Você demonstra perfil de liderança,
+        visão estratégica,
+        capacidade para tomar decisões,
+        assumir responsabilidades
+        e administrar equipes ou empresas.
+
+        Possui características importantes para cargos de gestão
+        ou para abrir seu próprio negócio.
+
+        </p>
+
+        `;
+
+        break;
+
+    }
+
+
+}else{
+
+
+    texto=`
+
+    <h2>🏆 Empate entre áreas</h2>
+
+    <p>
+
+    Você apresentou a mesma pontuação máxima em
+    <b>${melhores.length} áreas</b>.
+
+    Isso indica que seu perfil possui características
+    relacionadas a diferentes áreas da Administração.
+
+    </p>
+
+    <p>
+
+    <b>Áreas com maior afinidade:</b>
+
+    </p>
+
+    <ul>
+
+    ${melhores.map(area => `
+        <li>
+        <b>${area}</b> — ${areas[area]} pontos
+        </li>
+    `).join("")}
+
+    </ul>
+
+    <p>
+
+    Como as áreas obtiveram a mesma pontuação,
+    este teste não identifica uma única área predominante.
+    Todas as áreas acima apresentam o mesmo nível de afinidade.
+
+    </p>
+
+    `;
 
 }
 
+
+/* =========================================================
+   MOSTRA O RESULTADO
+   ========================================================= */
+
 document.getElementById("resultado").style.display="block";
+
 
 document.getElementById("resultado").innerHTML=`
 
@@ -597,21 +660,23 @@ ${barra("Logística",logistica)}
 
 ${barra("Marketing",marketing)}
 
-${barra("Gestão",gestao)}
+${barra("Gestão e Empreendedorismo",gestao)}
+
 
 <h2>
 
-Área com maior afinidade:
+Área(s) com maior afinidade:
 
 <br><br>
 
 <b style="color:#1565C0">
 
-${melhor}
+${melhores.join(" • ")}
 
 </b>
 
 </h2>
+
 
 <button onclick="location.reload()">
 
@@ -623,9 +688,13 @@ Refazer Teste
 
 `;
 
-/* Leva o usuário diretamente para o resultado */
 
-const resultado = document.getElementById("resultado");
+/* =========================================================
+   FOCO NO RESULTADO
+   ========================================================= */
+
+const resultado =
+    document.getElementById("resultado");
 
 resultado.setAttribute("tabindex","-1");
 
@@ -648,7 +717,9 @@ resultado.scrollIntoView({
 </div>
 
 
-<!-- METODOLOGIA RECOLHÍVEL -->
+<!-- =========================================================
+     METODOLOGIA RECOLHÍVEL
+     ========================================================= -->
 
 <details class="card metodologia">
 
@@ -696,6 +767,7 @@ O sistema calcula automaticamente todas as pontuações, organiza as áreas em o
 
 </p>
 
+
 <h3>Referências utilizadas na elaboração</h3>
 
 <p style="text-align:justify; line-height:1.8;">
@@ -722,6 +794,10 @@ O conteúdo das perguntas foi elaborado especificamente para este projeto, consi
 
 </details>
 
+
+<!-- =========================================================
+     RODAPÉ
+     ========================================================= -->
 
 <footer style="
 margin-top:50px;
@@ -768,5 +844,4 @@ Nepomuceno - MG
 </div>
 
 </body>
-
 </html>
