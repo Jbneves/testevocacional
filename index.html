@@ -22,79 +22,57 @@ header{
 }
 
 .container{
-
     max-width:900px;
     margin:auto;
     padding:20px;
-
 }
 
 .card{
-
     background:white;
     border-radius:12px;
     padding:20px;
     margin-bottom:18px;
     box-shadow:0 2px 8px rgba(0,0,0,.15);
-
 }
 
 h2{
-
     color:#1565C0;
-
 }
 
 .pergunta{
-
     font-size:18px;
     margin-bottom:15px;
-
 }
 
 .opcoes{
-
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
     gap:10px;
-
 }
 
 .opcoes label{
-
     background:#eeeeee;
     border-radius:8px;
     padding:10px;
     cursor:pointer;
     flex:1;
     text-align:center;
-
 }
 
 input[type=radio]{
-
     display:none;
-
 }
 
 input[type=radio]:checked + span{
-
-    color:white;
-
-}
-
-input[type=radio]:checked + span{
-
     display:block;
     background:#1565C0;
+    color:white;
     padding:10px;
     border-radius:8px;
-
 }
 
 button{
-
     width:100%;
     padding:18px;
     border:none;
@@ -104,41 +82,55 @@ button{
     border-radius:10px;
     cursor:pointer;
     margin-top:20px;
-
 }
 
 button:hover{
-
     background:#0D47A1;
-
 }
 
 #resultado{
+    display:none;
+    margin-top:30px;
+    scroll-margin-top:20px;
+}
 
-display:none;
-margin-top:30px;
-
+#resultado:focus{
+    outline:none;
 }
 
 .barra{
-
-height:28px;
-background:#ddd;
-border-radius:30px;
-overflow:hidden;
-margin-bottom:15px;
-
+    height:28px;
+    background:#ddd;
+    border-radius:30px;
+    overflow:hidden;
+    margin-bottom:15px;
 }
 
 .progresso{
+    height:100%;
+    width:0%;
+    background:#43A047;
+    color:white;
+    text-align:center;
+    line-height:28px;
+}
 
-height:100%;
-width:0%;
-background:#43A047;
-color:white;
-text-align:center;
-line-height:28px;
+/* METODOLOGIA */
 
+.metodologia{
+    margin-top:20px;
+}
+
+.metodologia summary{
+    cursor:pointer;
+    color:#1565C0;
+    font-size:20px;
+    font-weight:bold;
+    outline:none;
+}
+
+.metodologia summary:hover{
+    color:#0D47A1;
 }
 
 </style>
@@ -178,6 +170,7 @@ Marque um número de <b>1</b> a <b>5</b> para cada pergunta.
 </div>
 
 <form id="formulario">
+
 <div class="card">
 <div class="pergunta">
 1. Sinto prazer em trabalhar com números, cálculos e controle financeiro.
@@ -378,6 +371,7 @@ Calcular Resultado
 </button>
 
 <div id="resultado"></div>
+
 <script>
 
 function v(nome){
@@ -629,11 +623,19 @@ Refazer Teste
 
 `;
 
-window.scrollTo({
+/* Leva o usuário diretamente para o resultado */
 
-top:document.body.scrollHeight,
+const resultado = document.getElementById("resultado");
 
-behavior:"smooth"
+resultado.setAttribute("tabindex","-1");
+
+resultado.focus();
+
+resultado.scrollIntoView({
+
+    behavior:"smooth",
+
+    block:"start"
 
 });
 
@@ -644,9 +646,15 @@ behavior:"smooth"
 </form>
 
 </div>
-<div class="card">
 
-<h2>📚 Metodologia do Teste</h2>
+
+<!-- METODOLOGIA RECOLHÍVEL -->
+
+<details class="card metodologia">
+
+<summary>📚 Metodologia do Teste</summary>
+
+<div>
 
 <p style="text-align:justify; line-height:1.8;">
 
@@ -712,6 +720,9 @@ O conteúdo das perguntas foi elaborado especificamente para este projeto, consi
 
 </div>
 
+</details>
+
+
 <footer style="
 margin-top:50px;
 padding:25px;
@@ -724,35 +735,37 @@ line-height:1.8;
 
 <b>Teste Vocacional para o Curso Técnico em Administração</b>
 
-<p></p><b>Créditos</b><p>
+<p><b>Créditos</b></p>
 
-Ideia e concepção: Sebastião J. F. Resende aluno Curso Técnico em Administração CEFET – Nepomuceno/MG
+<p>
+Ideia e concepção: Sebastião J. F. Resende, aluno do Curso Técnico em Administração do CEFET – Nepomuceno/MG.
+</p>
 
-</b>
+<p>
+Desenvolvimento, programação e publicação: Josias Batista Neves.
+</p>
 
-<br>
-
-Desenvolvimento, Programação e Publicação: Josias Batista Neves
-
-<br>
-
+<p>
 Nepomuceno - MG
+</p>
 
-<br><br>
-
+<p>
 © 2026 - Todos os direitos reservados.
-<br><br>
+</p>
+
 <div style="font-size:14px;">
+
 👁️ Acessos:
+
 <img src="https://hits.sh/jbneves.github.io/testevocacional.svg?label=Acessos&color=1565C0"
      alt="Contador de acessos"
      style="vertical-align:middle;">
+
 </div>
 
-
-
-
 </footer>
+
+</div>
 
 </body>
 
