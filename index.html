@@ -115,6 +115,16 @@ button:hover{
     line-height:28px;
 }
 
+/* BOTÕES DE COMPARTILHAMENTO */
+
+.botao-compartilhar{
+    background:#2E7D32;
+}
+
+.botao-compartilhar:hover{
+    background:#1B5E20;
+}
+
 /* METODOLOGIA */
 
 .metodologia{
@@ -166,6 +176,14 @@ Marque um número de <b>1</b> a <b>5</b> para cada pergunta.
 <b>5</b> Concordo totalmente
 
 </p>
+
+<button type="button"
+        class="botao-compartilhar"
+        onclick="compartilharTeste()">
+
+📤 Compartilhar Teste
+
+</button>
 
 </div>
 
@@ -388,6 +406,130 @@ function v(nome){
     }
 
     return parseInt(resposta.value);
+
+}
+
+
+/* =========================================================
+   COMPARTILHAR TESTE
+   ========================================================= */
+
+function compartilharTeste(){
+
+    const url = window.location.href;
+
+    const texto =
+`📚 Teste Vocacional - Técnico em Administração
+
+Descubra com quais áreas da Administração você possui maior afinidade.
+
+Faça o teste:
+${url}`;
+
+    if(navigator.share){
+
+        navigator.share({
+
+            title:"Teste Vocacional - Técnico em Administração",
+
+            text:texto,
+
+            url:url
+
+        }).catch(() => {});
+
+    }else{
+
+        navigator.clipboard.writeText(texto)
+
+        .then(() => {
+
+            alert(
+                "Link do teste copiado!\n\n" +
+                "Agora você pode colar e compartilhar."
+            );
+
+        })
+
+        .catch(() => {
+
+            prompt(
+                "Copie o link do teste:",
+                url
+            );
+
+        });
+
+    }
+
+}
+
+
+/* =========================================================
+   COMPARTILHAR RESULTADO
+   ========================================================= */
+
+function compartilharResultado(
+    financeiro,
+    rh,
+    logistica,
+    marketing,
+    gestao,
+    melhores
+){
+
+    const url = window.location.href;
+
+    const texto =
+`📊 MEU RESULTADO - TESTE VOCACIONAL
+
+💰 Financeiro: ${financeiro}/15
+👥 Recursos Humanos: ${rh}/15
+📦 Logística: ${logistica}/15
+📈 Marketing: ${marketing}/15
+📊 Gestão e Empreendedorismo: ${gestao}/15
+
+🏆 Maior afinidade:
+${melhores.join(" • ")}
+
+Faça o teste também:
+${url}`;
+
+    if(navigator.share){
+
+        navigator.share({
+
+            title:"Meu Resultado - Teste Vocacional",
+
+            text:texto,
+
+            url:url
+
+        }).catch(() => {});
+
+    }else{
+
+        navigator.clipboard.writeText(texto)
+
+        .then(() => {
+
+            alert(
+                "Resultado copiado!\n\n" +
+                "Agora você pode colar e compartilhar."
+            );
+
+        })
+
+        .catch(() => {
+
+            prompt(
+                "Copie seu resultado:",
+                texto
+            );
+
+        });
+
+    }
 
 }
 
@@ -678,9 +820,24 @@ ${melhores.join(" • ")}
 </h2>
 
 
+<button onclick="compartilharResultado(
+    ${financeiro},
+    ${rh},
+    ${logistica},
+    ${marketing},
+    ${gestao},
+    ${JSON.stringify(melhores).replace(/"/g, '&quot;')}
+)"
+class="botao-compartilhar">
+
+📊 Compartilhar Resultado
+
+</button>
+
+
 <button onclick="location.reload()">
 
-Refazer Teste
+🔄 Refazer Teste
 
 </button>
 
@@ -822,11 +979,7 @@ Desenvolvimento, programação e publicação: Josias Batista Neves.
 </p>
 
 <p>
-Santo Antônio do Amparo - MG
-</p>
-
-<p>
-Contato: nevesbatistajosias@gmail.com
+Nepomuceno - MG
 </p>
 
 <p>
@@ -849,3 +1002,5 @@ Contato: nevesbatistajosias@gmail.com
 
 </body>
 </html>
+
+Essa versão mantém o funcionamento que você já tinha e acrescenta o compartilhamento. O Compartilhar Resultado também funciona quando houver empate: ele vai informar todas as áreas empatadas.
